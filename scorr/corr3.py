@@ -25,14 +25,10 @@ def fft2x(x, y, z, nfft=None):
         "Arrays must have the same length"
     )
     
-    # padding doesn't make sense since we're not going
-    # far beyond 10**4 data points per series, 
-    #otherwise the resulting matrix would be too big
     if not nfft:
+        # let's hope it's not too much!
         nfft = len(x)
-        
-    #print "fft2x nfft:", nfft,
-    
+            
     # transform
     xfft = fft(x, n=nfft)
     
@@ -47,22 +43,18 @@ def fft2x(x, y, z, nfft=None):
         zfft = yfft
     else:
         zfft = fft(z, n=nfft)
-
+    
     # create indices aligned with fftpack's fft2 quadrants
     # ----------------------------------------------------------
     ## l and k
-    lm = nfft/2 # max lag
-    i0 = np.concatenate([
-        np.arange(0,-lm-1,-1, dtype=int), np.arange(lm-1,0,-1, dtype=int)
-    ])
-    i = i0 * np.ones((nfft,nfft), dtype=int)
-    ## l + k
-    j0 = np.arange(nfft,0,-1)
-    j1 = np.arange(1,-nfft+1,-1)
-    j  = hankel(j0,j1)
-    j[0,0]  = -nfft
-    j[1:,0] = j[0,1:] = np.arange(-1,-nfft,-1)
-    j = fftshift(j)
+    lm = nfft / 2.
+    i0 = np.roll(
+        np.arange(int(np.ceil(lm-1)), int(-lm-1), -1), 
+        int(np.floor(lm)) + 1
+    )
+    i = i0 * np.ones((nfft, nfft), dtype=int)
+    j0 = np.arange(0, -nfft, -1)
+    j = hankel(j0, np.roll(j0,1))
     
     # B
     xfft = np.conjugate(xfft)
@@ -226,10 +218,12 @@ def x3corr_grouped_df(
         column by which to group. default: 'date'
     nfft: str, int
         Length of fft segments. Default: 'auto'.
-        'auto':     use the largest power of 2 < smallest group size
-        'auto pad': use the smallest power of 2 > smallest group size
-        'auto pad > 100':  same but ignoring groups with less than 100 events
+        'crop':      use the largest power of 2 < smallest group size
+        'pad':       use the smallest power of 2 > smallest group size
+        'pad > 100': same but ignoring groups with less than 100 events
+        'demix':     double-pad to perfectly separate anticausal frequencies.
         Note: 2d-fft can be really inefficient if nfft is not a power of 2.
+        See also: get_nfft
     funcs: list of functions
         functions to apply to cols before calculating the xcorr. 
         default: identity (lambda x: x)
