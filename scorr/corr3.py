@@ -44,9 +44,9 @@ def fft2x(x, y, z, nfft=None):
     else:
         zfft = fft(z, n=nfft)
     
-    # create indices aligned with fftpack's fft2 quadrants
+    # Fourier space product
     # ----------------------------------------------------------
-    ## l and k
+    ## create indices aligned with fftpack's fft2 quadrants
     lm = nfft / 2.
     i0 = np.roll(
         np.arange(int(np.ceil(lm-1)), int(-lm-1), -1), 
