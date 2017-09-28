@@ -12,9 +12,9 @@ supported.
 The algorithms to calculate three-point correlations described in:
 	
     Patzelt, F. and Bouchaud, J-P.:
-    Nonlinear price impact from linear models
-    Journal of Statistical Mechanics (2017)
-    Preprint at arXiv:1706.04163
+    Nonlinear price impact from linear models. 
+    Journal of Statistical Mechanics (2017). 
+    Preprint at arXiv:1706.04163.
     
     
 ======================  ======================================================
