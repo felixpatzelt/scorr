@@ -9,5 +9,8 @@
 /*.egg
 /*.eggs
 
+# ipython checkpoints
+*.ipynb_checkpoints
+
 # Mac OS
 .DS_Store

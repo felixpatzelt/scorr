@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-print "found packages", find_packages()
 
 setup(
     name='scorr',
