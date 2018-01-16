@@ -31,13 +31,17 @@ xcorrshift              Convert xcorr output so lag zero is centered
 The algorithms to calculate three-point correlations and details of daily
 averaging over high-frequency trading data are described in:
 	
-    Patzelt, F. and Bouchaud, J-P.:
+    Patzelt, F. and Bouchaud, J-P. (2017):
     Nonlinear price impact from linear models. 
-    Journal of Statistical Mechanics (2017, in print). 
+    Journal of Statistical Mechanics: Theory and Experiment, 12, 123404. 
     Preprint at `arXiv:1708.02411 <//arxiv.org/abs/1708.02411>`_.
 
-Please find further explanations in the docstrings and in the examples 
-directory.
+More code from the same publication is released in the `priceprop 
+<https://github.com/felixpatzelt/priceprop>`_ package. 
+
+Please find further 
+explanations in the docstrings and in the examples 
+directory. 
 
 
 Installation
