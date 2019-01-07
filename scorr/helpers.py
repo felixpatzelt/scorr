@@ -72,7 +72,7 @@ def get_nfft(nfft, g):
             # largest power of two < n
             nfft = int(2**np.floor(np.log2(n)))
         else:
-            raise ValueError, "Can't understand nfft='%s'" % nfft
+            raise ValueError("Can't understand nfft='%s'" % nfft)
     else:
         nfft = int(nfft)
         events_required = int(np.ceil(nfft / 2.))

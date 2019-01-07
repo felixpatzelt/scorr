@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='scorr',
-    version='1.0.0',
+    version='1.0.1',
     description=(
         'Fast and flexible two- and three-point correlation analysis '
         'for time series using spectral methods.'
@@ -22,8 +22,8 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2 :: Only',
         'Programming Language :: Python :: 2.7',
-        #'Programming Language :: Python :: 3',
-        #'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Scientific/Engineering',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules'
@@ -34,7 +34,7 @@ setup(
     ],
     url='http://github.com/felixpatzelt/scorr',
     download_url=(
-      'https://github.com/felixpatzelt/scorr/archive/1.0.0.tar.gz'
+      'https://github.com/felixpatzelt/scorr/archive/1.0.1.tar.gz'
     ),
     author='Felix Patzelt',
     author_email='felix@neuro.uni-bremen.de',
