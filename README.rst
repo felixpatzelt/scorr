@@ -53,7 +53,7 @@ Installation
 Dependencies (automatically installed)
 --------------------------------------
 
-    - Python 2.7
+    - Python 2.7 or 3.6
     - NumPy
     - SciPy
     - Pandas    
@@ -65,9 +65,3 @@ Optional Dependencies required only for the examples (pip installable)
     - Jupyter
     - Matplotlib
     - colorednoise
-
-
-Note
-----
-
-Python 3 is *NOT* supported as of yet!
