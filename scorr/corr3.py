@@ -10,7 +10,7 @@ try:
 except ImportError:
     from logging import getLogger
 
-from helpers import is_number_like, is_string_like, get_nfft
+from .helpers import is_number_like, is_string_like, get_nfft
 
 def fft2x(x, y, z, nfft=None):
     """Return Bi-cross-spectrum."""
@@ -49,11 +49,11 @@ def fft2x(x, y, z, nfft=None):
     ## create indices aligned with fftpack's fft2 quadrants
     lm = nfft / 2.
     i0 = np.roll(
-        np.arange(int(np.ceil(lm-1)), int(-lm-1), -1), 
+        np.arange(int(np.ceil(lm-1)), int(-lm-1), -1, dtype=int), 
         int(np.floor(lm)) + 1
     )
     i = i0 * np.ones((nfft, nfft), dtype=int)
-    j0 = np.arange(0, -nfft, -1)
+    j0 = np.arange(0, -nfft, -1, dtype=int)
     j = hankel(j0, np.roll(j0,1))
     
     # B
@@ -79,7 +79,7 @@ def padded_x3corr_norm(nfft, pad=0, segments=1, debias=True):
         with two-point xcorr defaults.
     """
     ndat = nfft - pad
-    nmid = min(ndat, nfft/2) # symmetry axis
+    nmid = min(ndat, nfft//2) # symmetry axis
     nemp = -min(0, ndat-pad) # completely empty
     w3 = np.ones((nfft,nfft))
     

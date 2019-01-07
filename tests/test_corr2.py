@@ -112,8 +112,8 @@ class TestGroupedAgainstUngrouped(unittest.TestCase):
        rdf = corr2.acorr_grouped_df(df, nfft='auto pad')
        self.assertTrue(
            (
-               abs(r[:self.dlen/2+1] - rdf['acorr'].loc[0:self.dlen/2]) 
-               < 3*rdf['acorr_std'].loc[0:self.dlen/2]
+               abs(r[:self.dlen//2+1] - rdf['acorr'].loc[0:self.dlen//2]) 
+               < 3*rdf['acorr_std'].loc[0:self.dlen//2]
            ).all()
        )
        
@@ -123,14 +123,14 @@ class TestGroupedAgainstUngrouped(unittest.TestCase):
        # positive lags
        self.assertTrue(
            (
-               abs(r[:self.dlen/2+1] - rdf['xcorr'].loc[0:self.dlen/2]) 
-               < 3*rdf['xcorr_std'].loc[0:self.dlen/2]
+               abs(r[:self.dlen//2+1] - rdf['xcorr'].loc[0:self.dlen//2]) 
+               < 3*rdf['xcorr_std'].loc[0:self.dlen//2]
            ).all()
        )
        # negative lags
        self.assertTrue(
            (
-               abs(r[-self.dlen/2-1:] - rdf['xcorr'].loc[-self.dlen/2:0]) 
-               < 3*rdf['xcorr_std'].loc[-self.dlen/2:0]
+               abs(r[-self.dlen//2-1:] - rdf['xcorr'].loc[-self.dlen//2:0]) 
+               < 3*rdf['xcorr_std'].loc[-self.dlen//2:0]
            ).all()
        )

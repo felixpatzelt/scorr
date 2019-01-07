@@ -10,7 +10,7 @@ try:
 except ImportError:
     from logging import getLogger
 
-from helpers import is_number_like, is_string_like, get_nfft
+from .helpers import is_number_like, is_string_like, get_nfft
     
 # Helpers
 # ===========================================================================
@@ -41,7 +41,7 @@ def corr_mat(x, maxlag=None):
 def xcorrshift(x, maxlag=None, as_pandas=False):
     """Return shifted (cross- / auto) correlation to center lag zero."""
     if not maxlag:
-        maxlag = len(x) / 2
+        maxlag = len(x) // 2
     # force pandas output?
     if as_pandas and not hasattr(x, 'iloc'):
         if len(np.shape(x)) > 1:
@@ -49,7 +49,7 @@ def xcorrshift(x, maxlag=None, as_pandas=False):
         else:
             x = pd.Series(x)
     # slice
-    ix = np.arange(-maxlag,maxlag+1)
+    ix = np.arange(-maxlag, maxlag+1, dtype=int)
     if hasattr(x, 'iloc'):
         xs = x.iloc[ix]
         xs.index = ix
@@ -112,7 +112,7 @@ def xcorr(
         Time series to analyse.
     norm: [optional]
         How to normalise the result
-            "corr": Return correlation, i.e. r \in [-1, 1] (default).
+            "corr": Return correlation, i.e. r \\in [-1, 1] (default).
             "cov":  Return covariance. E.g. the peak of an autocorrelation 
                     will have the height var(x) = var(y)
             int, float:
@@ -302,7 +302,7 @@ def xcorr_grouped_df(
     
     # determine fft segment size        
     nfft, events_required = get_nfft(nfft, g)
-    maxlag = int(min(nfft/2, events_required))
+    maxlag = int(min(nfft//2, events_required))
     
     # allocate
     acd = np.zeros((2*maxlag, len(g)))
@@ -385,7 +385,7 @@ def xcorr_grouped_df(
     
     # done
     if return_df:
-        lag = pd.Index(range(-maxlag,maxlag+1), name='lag')
+        lag = pd.Index(list(range(-maxlag,maxlag+1)), name='lag')
         return pd.DataFrame({
                 'xcorr':     xcorrshift(acdm, maxlag),
                 'xcorr_std': xcorrshift(acde, maxlag),
@@ -461,7 +461,7 @@ def acorr_grouped_df(
     
     # determine fft segment size
     nfft, events_required = get_nfft(nfft, g)
-    maxlag = int(min(nfft/2, events_required))
+    maxlag = int(min(nfft//2, events_required))
     
     # allocate
     acd = np.zeros((maxlag + 1, len(g)))
@@ -532,7 +532,7 @@ def acorr_grouped_df(
     
     # done
     if return_df:
-        lag = pd.Index(range(maxlag+1), name='lag')
+        lag = pd.Index(list(range(maxlag+1)), name='lag')
         return pd.DataFrame({
                 'acorr':     acdm,
                 'acorr_std': acde,

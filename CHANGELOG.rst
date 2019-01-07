@@ -1,6 +1,11 @@
 Changelog
 =========
 
+:Version: 1.0.1 of 2019-01-07
+
+Add Python 3 support.
+
+
 :Version: 1.0.0 of 2017-09-29
 
 Some minor documentation and metadata changes. This version is included with 

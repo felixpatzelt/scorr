@@ -1,8 +1,9 @@
-from corr2 import *
-from corr3 import *
+from .corr2 import *
+from .corr3 import *
+import imp
 
 def __reload_submodules__():
-    import helpers
-    reload(helpers)
-    reload(corr2)
-    reload(corr3)
+    from . import helpers
+    imp.reload(helpers)
+    imp.reload(corr2)
+    imp.reload(corr3)
