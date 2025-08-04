@@ -40,7 +40,7 @@ More code from the same publication is released in the `priceprop
 <https://github.com/felixpatzelt/priceprop>`_ package. 
 
 Please find further 
-explanations in the docstrings and in the `examples<examples>`_ 
+explanations in the docstrings and in the `examples <examples>`_ 
 directory. 
 
 
