@@ -1,6 +1,13 @@
 Changelog
 =========
 
+:Version: 1.1.0 of 2025-08-04
+
+Remove the undocumented __reload_submodules__ function. Reasons:
+- It was only ever used for debugging, better tools exist now
+- It relied on `imp`, which was removed in Python 3.12
+
+
 :Version: 1.0.1 of 2019-01-07
 
 Add Python 3 support.
