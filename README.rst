@@ -40,7 +40,7 @@ More code from the same publication is released in the `priceprop
 <https://github.com/felixpatzelt/priceprop>`_ package. 
 
 Please find further 
-explanations in the docstrings and in the examples 
+explanations in the docstrings and in the `examples <examples>`_ 
 directory. 
 
 
@@ -53,7 +53,7 @@ Installation
 Dependencies (automatically installed)
 --------------------------------------
 
-    - Python 2.7 or 3.6
+    - Python 2.7 or 3.6+
     - NumPy
     - SciPy
     - Pandas    
